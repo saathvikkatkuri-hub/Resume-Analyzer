@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f7fb">
+  <meta name="description" content="ResumeIQ compares the skills in your resume with a job description to help you understand your match.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 76 56'%3E%3Cpath fill='%23151D32' d='M3 3h20.5C36.2 3 43 9.7 43 20.1c0 8.1-4 13.4-11.4 15.8L47 53H31.5L18 37.5h-3.1V53H3V3Zm11.9 10.8v12.7h8.7c5.2 0 7.9-2.1 7.9-6.4 0-4.2-2.7-6.3-7.9-6.3h-8.7Z'/%3E%3Cpath fill='%23266BFF' d='M46 42h5v2h-1.5v7H51v2h-5v-2h1.5v-7H46v-2Z'/%3E%3Ccircle cx='59' cy='47.5' r='5.5' fill='none' stroke='%23266BFF' stroke-width='2.5'/%3E%3Cpath d='m62.5 51 3 3' stroke='%23266BFF' stroke-width='2.5' stroke-linecap='square'/%3E%3C/svg%3E">
+  <title>ResumeIQ — Resume Analyzer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="ResumeIQ home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 76 56" role="img" focusable="false">
+            <path class="logo-r" d="M3 3h20.5C36.2 3 43 9.7 43 20.1c0 8.1-4 13.4-11.4 15.8L47 53H31.5L18 37.5h-3.1V53H3V3Zm11.9 10.8v12.7h8.7c5.2 0 7.9-2.1 7.9-6.4 0-4.2-2.7-6.3-7.9-6.3h-8.7Z"/>
+            <path class="logo-iq" d="M46 42h5v2h-1.5v7H51v2h-5v-2h1.5v-7H46v-2Z"/>
+            <circle class="logo-iq-stroke" cx="59" cy="47.5" r="5.5"/>
+            <path class="logo-iq-stroke" d="m62.5 51 3 3"/>
+          </svg>
+        </span>
+        <span>Resume<span class="brand-iq">IQ</span></span>
+      </a>
+      <div class="sidebar-label">WORKSPACE</div>
+      <nav>
+        <a class="nav-link active" href="#analyzer" aria-current="page">
+          <span class="nav-icon" aria-hidden="true">⌕</span> Resume analyzer
+        </a>
+      </nav>
+      <div class="sidebar-note">
+        <span class="note-icon" aria-hidden="true">✦</span>
+        <p>Find the skills that bring your next opportunity within reach.</p>
+      </div>
+      <div class="sidebar-footer"><span class="status-dot"></span> Your career toolkit</div>
+    </aside>
+
+    <main id="top" class="main-content">
+      <header class="topbar">
+        <div class="breadcrumb">Workspace <span>/</span> Resume analyzer</div>
+      </header>
+
+      <section class="page-heading" id="analyzer">
+        <div>
+          <div class="eyebrow"><span></span> CAREER TOOLS</div>
+          <h1>ResumeIQ</h1>
+          <p class="subtitle">Resume Analyzer</p>
+        </div>
+      </section>
+
+      <form id="analyze-form" class="analyzer-form">
+        <section class="panel input-panel" aria-labelledby="details-heading">
+          <div class="panel-heading">
+            <div class="step-number">01</div>
+            <div><h2 id="details-heading">Add your details</h2><p>Share your resume and the job description.</p></div>
+          </div>
+
+          <div class="field-group">
+            <label class="field-label" for="resume">Your resume <span class="required">*</span></label>
+            <label class="upload-area" for="resume" id="upload-area">
+              <input id="resume" name="resume" type="file" accept="application/pdf,.pdf" required aria-describedby="file-help file-name">
+              <span class="upload-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5M5 14.5v3A2.5 2.5 0 0 0 7.5 20h9a2.5 2.5 0 0 0 2.5-2.5v-3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="upload-copy"><strong>Choose a PDF to upload</strong><span>or drag and drop it here</span></span>
+              <span class="file-type">PDF</span>
+            </label>
+            <p id="file-help" class="field-hint">PDF format · Your file is analyzed for this match.</p>
+            <p id="file-name" class="selected-file" aria-live="polite"></p>
+          </div>
+
+          <div class="field-group job-field">
+            <label class="field-label" for="job_description">Job description <span class="required">*</span></label>
+            <textarea id="job_description" name="job_description" required minlength="1" placeholder="Paste the job description here. Include the responsibilities and skills the employer is looking for..." aria-describedby="job-hint"></textarea>
+            <div class="textarea-meta"><span id="job-hint" class="field-hint">Include the role requirements for a more useful comparison.</span><span id="char-count" class="char-count">0 characters</span></div>
+          </div>
+
+          <div class="form-footer">
+            <p class="privacy-note"><span aria-hidden="true">▣</span> Your analysis is based on resume and job description keywords.</p>
+            <button id="analyze-button" class="primary-button" type="submit">
+              <span class="button-label">Analyze Resume</span>
+              <span class="button-spinner" aria-hidden="true"></span>
+              <svg class="button-arrow" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+          <p id="error-message" class="message error-message" role="alert" hidden></p>
+          <p id="loading-message" class="message loading-message" role="status" aria-live="polite" hidden><span class="mini-spinner" aria-hidden="true"></span> ResumeIQ is reading your resume and comparing skills…</p>
+        </section>
+      </form>
+
+      <section id="results" class="results-section" aria-labelledby="results-heading" hidden>
+        <div class="results-heading">
+          <div><div class="eyebrow"><span></span> YOUR RESULTS</div><h2 id="results-heading">Your match overview</h2><p id="result-file" class="results-file"></p></div>
+          <span class="result-chip"><span class="status-dot"></span> Analysis complete</span>
+        </div>
+
+        <div class="results-grid">
+          <article class="panel score-card" aria-labelledby="score-title">
+            <div class="card-kicker">SKILL MATCH</div>
+            <h3 id="score-title">Keyword match</h3>
+            <div class="score-display"><span id="match-value">0</span><span class="score-percent">%</span></div>
+            <p class="score-caption">of the detected job skills also appear in your resume</p>
+            <div class="progress-track" role="progressbar" aria-label="Keyword match percentage" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="match-progress"></span></div>
+            <p class="score-footnote">A keyword comparison, not an official ATS score.</p>
+          </article>
+          <article class="panel skill-card matched-card"><div class="skill-card-heading"><span class="skill-symbol positive" aria-hidden="true">✓</span><div><h3>Matched skills</h3><p>Found in both</p></div><span id="matched-count" class="count-badge">0</span></div><ul id="matched-skills" class="skill-list"></ul></article>
+          <article class="panel skill-card missing-card"><div class="skill-card-heading"><span class="skill-symbol gap" aria-hidden="true">＋</span><div><h3>Skills to highlight</h3><p>In the job description</p></div><span id="missing-count" class="count-badge">0</span></div><ul id="missing-skills" class="skill-list"></ul></article>
+          <article class="panel skill-card"><div class="skill-card-heading"><span class="skill-symbol resume-symbol" aria-hidden="true">▤</span><div><h3>Resume skills</h3><p>Detected in your resume</p></div><span id="resume-count" class="count-badge">0</span></div><ul id="resume-skills" class="skill-list"></ul></article>
+          <article class="panel skill-card"><div class="skill-card-heading"><span class="skill-symbol target-symbol" aria-hidden="true">◎</span><div><h3>Required skills</h3><p>Detected in the job description</p></div><span id="required-count" class="count-badge">0</span></div><ul id="required-skills" class="skill-list"></ul></article>
+        </div>
+        <p class="results-disclaimer">Results reflect keyword matching between the supplied resume and job description. Review each role carefully and tailor your application to your experience.</p>
+      </section>
+
+      <footer class="page-footer"><span>ResumeIQ <span class="brand-period">·</span> Resume Analyzer</span><span>Built to help you take the next step.</span></footer>
+    </main>
+  </div>
+</body>
+</html>
